@@ -26,7 +26,7 @@
     enable = true;
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch --flake /etc/nixos/#nixos-laptop";
+      rebuildNix = "sudo nixos-rebuild switch --flake /etc/nixos/#nixos-laptop";
     };
   };
 
