@@ -11,7 +11,6 @@
     htop
     fastfetch
     #vscode
-    chromium
   ];
 
   # Git direkt über Home-Manager konfigurieren
