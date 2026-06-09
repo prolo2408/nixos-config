@@ -8,27 +8,11 @@
 
       id = 0;
 
-      bookmarks = {
-        force = true;
-        
-        settings = [
-          {
-              name = "NixOS";
-              toolbar = true;
-              bookmarks = [
-              {
-                name = "Packages";
-                url = "https://search.nixos.org/packages";
-              }
-              {
-                name = "Manual";
-                url = "https://nixos.org/manual/nixos/stable/";
-              }
-            ];
-          }
-        ];
+      bookmarks = import ./awiesner-bookmarks.nix;
 
-       };
+      settings = {
+          "browser.toolbars.bookmarks.visibility" = "always"; # Zeigt die Symbolleiste dauerhaft an
+        };
 
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
         bitwarden
