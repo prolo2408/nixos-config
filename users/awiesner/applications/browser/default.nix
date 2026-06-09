@@ -9,6 +9,6 @@
   imports = [
     #./chromium.nix
     ./brave.nix
-    ./firefox.nix
+    ./firefox/firefox.nix
   ];
 }
