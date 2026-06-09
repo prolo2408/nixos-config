@@ -3,5 +3,7 @@
 {
   programs.brave = {
   enable = true;
+
+  
 };
 }
