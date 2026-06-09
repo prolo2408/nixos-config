@@ -17,6 +17,8 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    backupFileExtension = "backup";
+
     # Gibt inputs und userName an deine users/awiesner/default.nix weiter
     extraSpecialArgs = { inherit inputs userName; };
 
