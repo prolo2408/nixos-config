@@ -11,7 +11,7 @@
       bookmarks = import ./awiesner-bookmarks.nix;
 
       settings = {
-          "browser.toolbars.bookmarks.visibility" = "always"; # Zeigt die Symbolleiste dauerhaft an
+          "browser.toolbars.bookmarks.visibility" = "always";
         };
 
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
@@ -20,4 +20,4 @@
       ];
     };
   };
-}   
+}

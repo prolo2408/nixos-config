@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./desktop-envirement/default.nix
+    ./KDE/kde.nix
   ];
 }
