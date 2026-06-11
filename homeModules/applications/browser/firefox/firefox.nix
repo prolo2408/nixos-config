@@ -11,6 +11,7 @@
       bookmarks = import ./awiesner-bookmarks.nix;
 
       settings = {
+          force = true;
           "browser.toolbars.bookmarks.visibility" = "always";
         };
 

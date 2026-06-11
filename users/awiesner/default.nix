@@ -3,7 +3,7 @@
 {
   imports = [
     # Hier binden wir die Brave-Konfiguration modular ein
-    ./applications/default.nix
+    # ./applications/default.nix
   ];
 
   home.username = userName;

@@ -16,15 +16,15 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-
     backupFileExtension = "backup";
-
-    # Gibt inputs und userName an deine users/awiesner/default.nix weiter
     extraSpecialArgs = { inherit inputs userName; };
+    users.${userName} = import ./default.nix;
 
-    # Lädt deine Benutzerdatei
-    users.${userName} = import ../users/${userName}/default.nix;
-  };
+    # plasma-manager Modul für alle User einbinden
+    sharedModules = [
+      inputs.plasma-manager.homeManagerModules.plasma-manager
+    ];
+  }; 
 
   programs.dconf.enable = true;
 }
