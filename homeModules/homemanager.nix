@@ -19,12 +19,10 @@
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs userName; };
     users.${userName} = import ./default.nix;
-
-    # plasma-manager Modul für alle User einbinden
     sharedModules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeManagerModules.plasma-manager
     ];
-  }; 
+  };
 
   programs.dconf.enable = true;
 }

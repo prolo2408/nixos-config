@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -33,25 +33,25 @@
     # ── Shortcuts ─────────────────────────────────────────────────────
     shortcuts = {
       kwin = {
-        "Overview"                        = [];
-        "Grid View"                       = "Meta+G";
-        "Kill Window"                     = "Meta+Ctrl+Esc";
-        "Show Desktop"                    = "Meta+D";
-        "Walk Through Windows"            = [ "Meta+Tab" "Alt+Tab" ];
-        "Walk Through Windows (Reverse)"  = [ "Meta+Shift+Tab" "Alt+Shift+Tab" ];
-        "Window Close"                    = "Alt+F4";
-        "Window Maximize"                 = "Meta+PgUp";
-        "Window Minimize"                 = "Meta+PgDown";
-        "Window Quick Tile Left"          = "Meta+Left";
-        "Window Quick Tile Right"         = "Meta+Right";
-        "Window Quick Tile Top"           = "Meta+Up";
-        "Window Quick Tile Bottom"        = "Meta+Down";
-        "Window One Desktop to the Left"  = "Meta+Ctrl+Shift+Left";
-        "Window One Desktop to the Right" = "Meta+Ctrl+Shift+Right";
-        "Window to Next Screen"           = "Meta+Shift+Right";
-        "Window to Previous Screen"       = "Meta+Shift+Left";
-        "Switch One Desktop to the Left"  = "Meta+Ctrl+Left";
-        "Switch One Desktop to the Right" = "Meta+Ctrl+Right";
+        "Overview"                           = [];
+        "Grid View"                          = "Meta+G";
+        "Kill Window"                        = "Meta+Ctrl+Esc";
+        "Show Desktop"                       = "Meta+D";
+        "Walk Through Windows"               = [ "Meta+Tab" "Alt+Tab" ];
+        "Walk Through Windows (Reverse)"     = [ "Meta+Shift+Tab" "Alt+Shift+Tab" ];
+        "Window Close"                       = "Alt+F4";
+        "Window Maximize"                    = "Meta+PgUp";
+        "Window Minimize"                    = "Meta+PgDown";
+        "Window Quick Tile Left"             = "Meta+Left";
+        "Window Quick Tile Right"            = "Meta+Right";
+        "Window Quick Tile Top"              = "Meta+Up";
+        "Window Quick Tile Bottom"           = "Meta+Down";
+        "Window One Desktop to the Left"     = "Meta+Ctrl+Shift+Left";
+        "Window One Desktop to the Right"    = "Meta+Ctrl+Shift+Right";
+        "Window to Next Screen"              = "Meta+Shift+Right";
+        "Window to Previous Screen"          = "Meta+Shift+Left";
+        "Switch One Desktop to the Left"     = "Meta+Ctrl+Left";
+        "Switch One Desktop to the Right"    = "Meta+Ctrl+Right";
       };
       ksmserver = {
         "Lock Session" = [ "Meta+L" "Screensaver" ];
@@ -71,7 +71,7 @@
       };
     };
 
-    # ── Config ────────────────────────────────────────────────────────
+    # ── Config (ein einziger Block) ────────────────────────────────────
     configFile = {
       # Scrollen
       "kcminputrc"."Libinput"."NaturalScroll" = false;
@@ -79,22 +79,13 @@
       "kcminputrc"."Mouse"."cursorSize" = 24;
 
       # KWin Effects
-      "kwinrc"."Effect-overview"."BorderActivate"   = 9;
+      "kwinrc"."Effect-overview"."BorderActivate"  = 9;
       "kwinrc"."Effect-windowview"."BorderActivate" = 9;
       "kwinrc"."Plugins"."windowviewEnabled"        = false;
       "kwinrc"."Plugins"."wobblywindowsEnabled"     = false;
       "kwinrc"."Plugins"."fadedesktopEnabled"       = false;
       "kwinrc"."Plugins"."slideEnabled"             = true;
-      "kwinrc"."Plugins"."appmenuEnabled"           = false;
       "kwinrc"."Tiling"."padding"                   = 4;
-
-      # Performance
-      "kwinrc"."Compositing"."Enabled"                 = true;
-      "kwinrc"."Compositing"."Backend"                 = "OpenGL";
-      "kwinrc"."Compositing"."GLCore"                  = true;
-      "kwinrc"."Compositing"."LatencyPolicy"           = "Low";
-      "kwinrc"."Compositing"."MaxFPS"                  = 60;
-      "kwinrc"."Compositing"."WindowsBlockCompositing" = false;
 
       # Klassy Decoration
       "kwinrc"."org.kde.kdecoration2"."library" = "org.kde.klassy";
@@ -108,17 +99,16 @@
       "klassyrc"."Windeco"."ActiveButtonIconColor"   = "#000000";
 
       # Sonstiges
-      "kwalletrc"."Wallet"."First Use"   = false;
-      "plasma-localerc"."Formats"."LANG" = "en_US.UTF-8";
+      "kwalletrc"."Wallet"."First Use"       = false;
+      "plasma-localerc"."Formats"."LANG"     = "en_US.UTF-8";
     };
 
     # ── Panels ────────────────────────────────────────────────────────
     panels = [
-      # Taskleiste oben – Programme + Desktop-Switcher
       {
         location = "top";
         floating  = false;
-        height    = 32;
+        height    = 28;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
@@ -128,17 +118,7 @@
               showRecentDocs = "false";
             };
           }
-          "org.kde.plasma.pager"
-          {
-            name = "org.kde.plasma.icontasks";
-            config.General = {
-              launchers              = "";
-              showOnlyCurrentScreen  = "false";
-              showOnlyCurrentDesktop = "true";
-              iconSize               = "2";
-              fill                   = "true";
-            };
-          }
+          "org.kde.plasma.appmenu"
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.systemtray"
           {
@@ -150,7 +130,24 @@
           }
         ];
       }
-      # Kein unterer Dock mehr – Programme sind oben
+      {
+        location = "bottom";
+        floating  = true;
+        height    = 64;
+        hiding    = "dodgewindows";
+        widgets = [
+          {
+            name = "org.kde.plasma.icontasks";
+            config.General = {
+              launchers              = "";
+              showOnlyCurrentScreen  = "false";
+              showOnlyCurrentDesktop = "false";
+              iconSize               = "3";
+              fill                   = "false";
+            };
+          }
+        ];
+      }
     ];
   };
 

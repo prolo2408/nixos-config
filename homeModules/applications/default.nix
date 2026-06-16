@@ -8,13 +8,13 @@
 {
   imports = [
     ./browser/default.nix
+    ./code-editor/default.nix
   ];
 
     home.packages = with pkgs; [
     htop
     fastfetch
     kdePackages.kate
-    vscode
     vim
     git
   ];
