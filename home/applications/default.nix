@@ -1,0 +1,9 @@
+{ ... }:
+
+{
+  imports = [
+    ./browsers
+    ./editors
+    ./ai
+  ];
+}
