@@ -4,7 +4,6 @@
 {
   imports = [
     ./shell.nix
-    ./applications
   ];
 
   home.username = userName;

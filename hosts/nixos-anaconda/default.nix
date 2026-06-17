@@ -1,15 +1,12 @@
-# Host: nixos-anaconda  (Hyprland)
-{ userName, ... }:
+# Host: nixos-anaconda  (Headless Server, kein Desktop-Environment)
+{ ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/desktop/hyprland.nix
+    ../../modules/server
   ];
 
   # Muss dem Flake-Attributnamen entsprechen (siehe flake.nix / rebuild-Alias).
   networking.hostName = "nixos-anaconda";
-
-  # Home-Manager: Hyprland-Konfiguration nur für diesen Host.
-  home-manager.users.${userName}.imports = [ ../../home/desktop/hyprland.nix ];
 }

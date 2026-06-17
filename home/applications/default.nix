@@ -5,5 +5,6 @@
     ./browsers
     ./editors
     ./ai
+    #./vm
   ];
 }
