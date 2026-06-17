@@ -6,6 +6,10 @@
 {
   programs.bash = {
     enable = true;
+    sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+    };
     shellAliases = {
       ll = "ls -l";
 
