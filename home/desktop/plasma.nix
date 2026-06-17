@@ -132,7 +132,7 @@
           {
             name = "org.kde.plasma.icontasks";
             config.General = {
-              launchers              = "";
+              launchers              = "applications:librewolf.desktop";
               showOnlyCurrentScreen  = "false";
               showOnlyCurrentDesktop = "true";
               iconSize               = "2";

@@ -9,6 +9,7 @@
       { name = "NixOS Handbuch"; url = "https://nixos.org/manual/nixos/stable/"; }
       { name = "Home-Manager Optionen"; url = "https://nix-community.github.io/home-manager/options.xhtml"; }
       { name = "MyNixOS"; url = "https://mynixos.com/"; }
+      { name = "Home-Manager"; url = "https://home-manager-options.extranix.com/"; }
     ];
   }
   {

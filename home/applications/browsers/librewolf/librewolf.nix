@@ -39,7 +39,7 @@ in
         "browser.toolbars.bookmarks.visibility" = "always";
 
         # Dark mode
-        "ui.systemUsesDarkTheme" = 1;
+        "ui.systemUsesDarkTheme" = 0;
         "browser.theme.content-theme" = 0;
         "browser.theme.toolbar-theme" = 0;
         "layout.css.prefers-color-scheme.content-override" = 0;
@@ -61,6 +61,7 @@ in
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           bitwarden
           ublock-origin
+          darkreader
         ];
       };
     };
