@@ -101,6 +101,11 @@ in
         # Auto-handle cookie consent banners
         "cookiebanners.service.mode" = 2;
 
+        # Keep cookies after browser shutdown instead of LibreWolf's default
+        # of wiping them every session, so logins survive a restart/rebuild.
+        "network.cookie.lifetimePolicy" = 0;
+        "privacy.sanitize.sanitizeOnShutdown" = false;
+
         "general.autoScroll" = true;
         "middlemouse.paste" = false;
       };
